@@ -2,10 +2,10 @@
 
 terraform {
   backend "s3" {
-    bucket         = "{{RESOURCE_NAME}}"
+    bucket         = "well-sparkitected-provision"
     key            = "terraform/dev"
-    region         = "{{AWS_REGION}}"
-    dynamodb_table = "{{RESOURCE_NAME}}"
+    region         = "us-east-2"
+    dynamodb_table = "well-sparkitected-provision"
     encrypt        = true
   }
 }
