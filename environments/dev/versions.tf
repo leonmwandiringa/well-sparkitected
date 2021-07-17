@@ -1,5 +1,5 @@
 
-# BRSK
+# LTM
 # required version
 
 terraform {

@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "default" {
   }
 
   lifecycle_rule {
-    id      = "log"
+    id      = "incomplete-multiparts"
     enabled = var.enable_lifecyle_rule
 
     tags = {
@@ -30,10 +30,6 @@ resource "aws_s3_bucket" "default" {
       storage_class = "ONEZONE_IA"
     }
 
-    transition {
-      days          = var.glacier_transition_days
-      storage_class = "GLACIER"
-    }
 
     expiration {
       days = var.expiration_days
