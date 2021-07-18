@@ -119,13 +119,6 @@ output "eks_node_group_status" {
 
 /////bucket outputs/////
 output "bucket_id" {
-  value = module.nlb_access_logs.bucket_id
+  value = module.data_lake.bucket_id
 }
 ////////////////
-
-///////apigateway cloudwatch log group
-output "cloudwatch_id" {
-  value       = aws_cloudwatch_log_group.default.arn
-  description = "cloudwatch"
-}
-////////////////////////////////

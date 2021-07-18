@@ -16,26 +16,6 @@ resource "aws_s3_bucket" "default" {
     }
   }
 
-  lifecycle_rule {
-    id      = "incomplete-multiparts"
-    enabled = var.enable_lifecyle_rule
-
-    tags = {
-      rule      = "log"
-      autoclean = "true"
-    }
-
-    transition {
-      days          = var.one_zone_ia_transition_days
-      storage_class = "ONEZONE_IA"
-    }
-
-
-    expiration {
-      days = var.expiration_days
-    }
-  }
-
   tags = merge(
     {
         Name = "${var.project_name}_${var.bucket_name}"

@@ -14,25 +14,21 @@ module "network" {
   project_name               = "${var.global_tags.Project}_${var.global_tags.Environment}"
 }
 
-module "apigcloudwatch" {
-  source = "../../modules/cloud-watch"
-  retention_in_days = var.retention_in_days
-  project_name = "${var.global_tags.Project}_${var.global_tags.Environment}_api_gateway"
-  tags = var.global_tags
-}
+# module "apigcloudwatch" {
+#   source = "../../modules/cloud-watch"
+#   retention_in_days = var.retention_in_days
+#   project_name = "${var.global_tags.Project}_${var.global_tags.Environment}_api_gateway"
+#   tags = var.global_tags
+# }
 
 module "data_lake" {
   source                      = "../../modules/s3"
   bucket_name                 = var.bucket_name
-  bucket_acl             = var.bucket_acl
+  bucket_acl                  = var.bucket_acl
   enable_bucket_versioning    = var.enable_bucket_versioning
-  one_zone_ia_transition_days = var.one_zone_ia_transition_days
-  expiration_days             = var.expiration_days
-  glacier_transition_days     = var.glacier_transition_days
   encryption_algorithm        = var.encryption_algorithm
-  enable_lifecyle_rule        = var.enable_lifecyle_rule
   project_name                = "${var.global_tags.Project}_${var.global_tags.Environment}"
-  tags                 = var.global_tags
+  tags                        = var.global_tags
 }
 
 module "eks_cluster" {
